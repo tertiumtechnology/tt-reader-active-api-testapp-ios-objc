@@ -423,6 +423,11 @@ static NSString* const deviceCommandNames[] = {
 		
 		// Initialize sensors
 		[_readerCommandsMap addObject: ^(DeviceDetailViewController*vc) {
+            if (vc->_activeDevice == nil) {
+                [vc appendTextToBuffer: @"Please do inventory and select a device first!" color: [UIColor redColor]];
+                return;
+            }
+            
             [vc->_sensors removeAllObjects];
             [vc->_pikSelectSensor reloadAllComponents];
             [vc enableDeviceStartButton: false];
