@@ -412,8 +412,8 @@ static NSString* const deviceCommandNames[] = {
 		
 		// Do inventory
 		[_readerCommandsMap addObject: ^(DeviceDetailViewController*vc) {		
-			vc->_firstTime = true;
 			[vc clearInventory];
+            vc->_firstTime = true;
 			[vc->_api doInventory: true];
 			[vc appendTextToBuffer: @"Do inventory" color: [UIColor yellowColor]];
 			[vc enableReaderStartButton: true];
