@@ -1,4 +1,4 @@
-# tt-reader-active-api-testapp-ios-swift
+# tt-reader-active-api-testapp-ios-objc
 iOS Swift demo application for Tertium active reader rfid devices API.
 
 ## License
@@ -12,9 +12,9 @@ To download full source code for the demo application and the libraries follow t
 
 - Open a terminal window
 - Change current directory to any Xcode source directory you have (f.e. Desktop/coding/)
-- type: ```git clone https://github.com/tertiumtechnology/tt-reader-active-api-testapp-ios-swift --recurse-submodules ```
+- type: ```git clone https://github.com/tertiumtechnology/tt-reader-active-api-testapp-ios-objc --recurse-submodules ```
 - Open Xcode
-- Search the directory where you downloaded the files and open the project ```tt-reader-active-api-testapp-ios-swift/RfidActiveApiReaderTestappIosSwift.xcodeproj```
+- Search the directory where you downloaded the files and open the project ```tt-reader-active-api-testapp-ios-swift/RfidActiveApiReaderTestappIosObjc.xcodeproj```
 - Select a connected iOS device as build device and press Run
 
 ## Troubleshooting
