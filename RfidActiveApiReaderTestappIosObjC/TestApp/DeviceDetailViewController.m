@@ -960,9 +960,9 @@ static NSString* const deviceCommandNames[] = {
     result = [NSString stringWithFormat: @"Result command = %d %@", command, errStr];
     [self appendTextToBuffer: result error: error];
     if (_inMultiCommand) {
-        if (command == 7) {
-            _inMultiCommand = false;
+        if (command == ABSTRACT_READER_LISTENER_GET_CLOCK_COMMAND) {
             [self enableDeviceStartButton: true];
+            _inMultiCommand = false;
         }
     } else {
         if (_lastCommandType == readerCommand) {
