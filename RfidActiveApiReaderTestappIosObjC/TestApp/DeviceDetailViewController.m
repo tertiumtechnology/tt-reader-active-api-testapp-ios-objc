@@ -912,7 +912,16 @@ static NSString* const deviceCommandNames[] = {
 	[_deviceNames removeAllObjects];
 	[_sensors removeAllObjects];
 	[_pikSelectDevice reloadAllComponents];
-	_activeSensor = nil;
+    _activeSensor = nil;
+    _activeDevice = nil;
+    _activeDeviceIndex = 0;
+    _activeSensorIndex = 0;
+    _lastCommandType = readerCommand;
+    _batteryLevel = 0;
+    _batteryStatus = 0;
+    _deviceAvailable = false;
+    [self enableReaderStartButton: false];
+    [self enableDeviceStartButton: false];
 }
 
 -(void)firmwareVersionEvent: (int) major minor: (int) minor
