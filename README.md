@@ -1,5 +1,5 @@
 # tt-reader-active-api-testapp-ios-objc
-iOS Swift demo application for Tertium active reader rfid devices API.
+iOS ObjectiveC demo application for Tertium active reader rfid devices API.
 
 ## License
 The test application and the libraries are released under the MIT license. Please see the `LICENSE` file.
