@@ -135,6 +135,7 @@ static NSString* const deviceCommandNames[] = {
     // Do any additional setup after loading the view.
     _api = [ActiveReader getInstance];
 	_eventsForwarder = [EventsForwarder getInstance];
+    _eventsForwarder.inventoryListenerDelegate = self;
     _eventsForwarder.responseListenerDelegate = self;
     _eventsForwarder.readerListenerDelegate = self;
 

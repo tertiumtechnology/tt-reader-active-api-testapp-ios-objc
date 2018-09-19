@@ -33,6 +33,7 @@ static EventsForwarder *_sharedInstance;
     self = [super init];
     if (self) {
         _api = [ActiveReader getInstance];
+        _api.inventoryListenerDelegate = self;
         _api.responseListenerDelegate = self;
         _api.readerListenerDelegate = self;
     }
@@ -179,6 +180,12 @@ static EventsForwarder *_sharedInstance;
 - (void)getReaderRadioPowerEvent:(int)radioPower
 {
     [_readerListenerDelegate getReaderRadioPowerEvent: radioPower];
+}
+
+// AbstractInventoryListener protocol
+- (void)inventoryEvent:(ActiveDevice *)device
+{
+    [_inventoryListenerDelegate inventoryEvent: device];
 }
 
 @end

@@ -25,7 +25,7 @@
 #import <Foundation/Foundation.h>
 #import <RfidActiveApiReaderLibObjC/RfidActiveApiReaderLibObjC.h>
 
-@interface EventsForwarder : NSObject<AbstractResponseListenerProtocol, AbstractReaderListenerProtocol>
+@interface EventsForwarder : NSObject<AbstractResponseListenerProtocol, AbstractReaderListenerProtocol, AbstractInventoryListenerProtocol>
 {
     ActiveReader *_api;
 }
