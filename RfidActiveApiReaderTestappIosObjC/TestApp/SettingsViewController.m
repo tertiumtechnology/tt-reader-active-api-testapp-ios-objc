@@ -22,7 +22,7 @@
  * THE SOFTWARE.
  */
 
-#import <RfidActiveApiSensorLibObjC/RfidActiveApiSensorLibObjC.h>
+#import <RfidActiveApiReaderLibObjC/RfidActiveApiReaderLibObjC.h>
 #import "SettingsViewController.h"
 
 @interface SettingsViewController ()

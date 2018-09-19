@@ -32,9 +32,9 @@ static EventsForwarder *_sharedInstance;
 {
     self = [super init];
     if (self) {
-        _api = [ActiveSensor getInstance];
+        _api = [ActiveReader getInstance];
         _api.responseListenerDelegate = self;
-        _api.sensorListenerDelegate = self;
+        _api.readerListenerDelegate = self;
     }
     
     return self;
@@ -50,110 +50,135 @@ static EventsForwarder *_sharedInstance;
 }
 
 // AbstractResponseListenerProtocol protocol
--(void)calibrateSensorEvent: (int) sensorType error: (int) error
+-(void)calibrateSensorEvent: (int) deviceAddress sensorType: (int) sensorType error: (int) error
 {
-    [_responseListenerDelegate calibrateSensorEvent: sensorType error: error];
+    [_responseListenerDelegate calibrateSensorEvent: (int) deviceAddress sensorType: (int)sensorType error: error];
 }
 
--(void)getCalibrationConfigurationEvent: (int) sensorType error: (int) error uncalibratedRawValue: (int) uncalibratedRawValue valueOffset: (int) valueOffset valueGain: (float) valueGain fullScale: (int) fullScale
+-(void)getCalibrationConfigurationEvent: (int) deviceAddress sensorType: (int) sensorType error: (int) error uncalibratedRawValue: (int) uncalibratedRawValue valueOffset: (int) valueOffset valueGain: (float) valueGain fullScale: (int) fullScale
 {
-    [_responseListenerDelegate getCalibrationConfigurationEvent: sensorType error: error uncalibratedRawValue: uncalibratedRawValue valueOffset: valueOffset valueGain: valueGain fullScale: fullScale];
+    [_responseListenerDelegate getCalibrationConfigurationEvent: (int) deviceAddress sensorType: sensorType error: error uncalibratedRawValue: uncalibratedRawValue valueOffset: valueOffset valueGain: valueGain fullScale: fullScale];
 }
 
--(void)getLogConfigurationEvent: (int) sensorType error: (int) error logEnable: (bool) logEnable logPeriod: (int) logPeriod
+-(void)getLogConfigurationEvent: (int) deviceAddress sensorType: (int) sensorType error: (int) error logEnable: (bool) logEnable logPeriod: (int) logPeriod
 {
-    [_responseListenerDelegate getLogConfigurationEvent: sensorType error: error logEnable: logEnable logPeriod: logPeriod];
+    [_responseListenerDelegate getLogConfigurationEvent: deviceAddress sensorType: (int) sensorType error: error logEnable: logEnable logPeriod: logPeriod];
 }
 
--(void)logSensorEvent: (int) sensorType error: (int) error
+-(void)logSensorEvent: (int) deviceAddress sensorType: (int) sensorType error: (int) error
 {
-    [_responseListenerDelegate logSensorEvent: sensorType error: error];
+    [_responseListenerDelegate logSensorEvent: (int) deviceAddress sensorType: (int) sensorType error: error];
 }
 
--(void)readLocalizationEvent: (int) error latitude: (float) latitude longitude: (float) longitude timestamp: (int) timestamp
+-(void)readLocalizationEvent: (int) deviceAddress error: (int) error latitude: (float) latitude longitude: (float) longitude timestamp: (int) timestamp
 {
-    [_responseListenerDelegate readLocalizationEvent: error latitude: latitude longitude: longitude timestamp: timestamp];
+    [_responseListenerDelegate readLocalizationEvent: deviceAddress error: error latitude: latitude longitude: longitude timestamp: timestamp];
 }
 
--(void)readMagneticSealStatusEvent: (int) error status: (int) status
+-(void)readMagneticSealStatusEvent: (int) deviceAddress error: (int) error status: (int) status
 {
-    [_responseListenerDelegate readMagneticSealStatusEvent: error status: status];
+    [_responseListenerDelegate readMagneticSealStatusEvent: deviceAddress error: error status: status];
 }
 
--(void)readOpticSealBackgroundEvent: (int) error backgroundLevel: (int) backgroundLevel
+-(void)readOpticSealBackgroundEvent: (int) deviceAddress error: (int) error backgroundLevel: (int) backgroundLevel
 {
-    [_responseListenerDelegate readOpticSealBackgroundEvent: error backgroundLevel: backgroundLevel];
+    [_responseListenerDelegate readOpticSealBackgroundEvent: deviceAddress error: error backgroundLevel: backgroundLevel];
 }
 
--(void)readOpticSealForegroundEvent: (int) error foregroundLevel: (int) foregroundLevel
+-(void)readOpticSealForegroundEvent: (int) deviceAddress error: (int) error foregroundLevel: (int) foregroundLevel
 {
-    [_responseListenerDelegate readOpticSealForegroundEvent: error foregroundLevel: foregroundLevel];
+    [_responseListenerDelegate readOpticSealForegroundEvent: deviceAddress error: error foregroundLevel: foregroundLevel];
 }
 
--(void)readSealEvent: (int) error closed: (bool) closed status: (int) status
+-(void)readSealEvent: (int) deviceAddress error: (int) error closed: (bool) closed status: (int) status
 {
-    [_responseListenerDelegate readSealEvent: error closed: closed status: status];
+    [_responseListenerDelegate readSealEvent: deviceAddress error: error closed: closed status: status];
 }
 
--(void)readSensorEvent: (int) sensorType error: (int) error sensorValue: (float) sensorValue timestamp: (int) timestamp
+-(void)readSensorEvent: (int) deviceAddress sensorType: (int) sensorType error: (int) error sensorValue: (float) sensorValue timestamp: (int) timestamp
 {
-    [_responseListenerDelegate readSensorEvent: sensorType error: error sensorValue: sensorValue timestamp: timestamp];
+    [_responseListenerDelegate readSensorEvent: deviceAddress sensorType: sensorType error: error sensorValue: sensorValue timestamp: timestamp];
 }
 
--(void)setupSealEvent: (int) error
+-(void) setupSealEvent: (int) deviceAddress error: (int) error
 {
-    [_responseListenerDelegate setupSealEvent: error];
+    [_responseListenerDelegate setupSealEvent: deviceAddress error: error];
 }
 
-// AbstractSensorListenerProtocol
+// AbstractReaderListenerProtocol
 -(void)availabilityEvent: (bool) available
 {
-    [_sensorListenerDelegate availabilityEvent: available];
+    [_readerListenerDelegate availabilityEvent: available];
 }
 
 -(void)connectionFailureEvent: (int) error
 {
-    [_sensorListenerDelegate connectionFailureEvent: error];
+    [_readerListenerDelegate connectionFailureEvent: error];
 }
 
 -(void)connectionSuccessEvent
 {
-    [_sensorListenerDelegate connectionSuccessEvent];
+    [_readerListenerDelegate connectionSuccessEvent];
 }
 
 -(void)disconnectionSuccessEvent
 {
-    [_sensorListenerDelegate disconnectionSuccessEvent];
+    [_readerListenerDelegate disconnectionSuccessEvent];
 }
 
--(void)firmwareVersionEvent: (int) major minor: (int) minor
+-(void)getReaderFirmwareVersionEvent: (int) major minor: (int) minor
 {
-    [_sensorListenerDelegate firmwareVersionEvent: major minor: minor];
+    [_readerListenerDelegate getReaderFirmwareVersionEvent: major minor: minor];
 }
 
--(void)getClockEvent: (int) sensorTime systemTime: (int) systemTime
+-(void)getDeviceFirmwareVersionEvent: (int) major minor: (int) minor
 {
-    [_sensorListenerDelegate getClockEvent: sensorTime systemTime: systemTime];
+    [_readerListenerDelegate getDeviceFirmwareVersionEvent: major minor: minor];
 }
 
--(void)getLoggedLocalizationDataEvent: (int) gpserror latitude: (float) latitude longitude: (float) longitude timestamp: (int) timestamp
+-(void)getClockEvent: (int) deviceAddress sensorTime: (int) sensorTime systemTime: (int) systemTime
 {
-    [_sensorListenerDelegate getLoggedLocalizationDataEvent: gpserror latitude: latitude longitude: longitude timestamp: timestamp];
+    [_readerListenerDelegate getClockEvent: deviceAddress sensorTime: sensorTime systemTime: systemTime];
 }
 
--(void)getLoggedMeasureDataEvent: (int) sensorType sensorValue: (float) sensorValue timestamp: (int) timestamp
+-(void) getLoggedLocalizationDataEvent: (int) deviceAddress gpsError: (int) gpsError latitude: (float) latitude longitude: (float) longitude timestamp: (int) timestamp
 {
-    [_sensorListenerDelegate getLoggedMeasureDataEvent: sensorType sensorValue: sensorValue timestamp: timestamp];
+    [_readerListenerDelegate getLoggedLocalizationDataEvent: deviceAddress gpsError: gpsError latitude: latitude longitude: longitude timestamp: timestamp];
 }
 
--(void)getLoggedSealDataEvent: (bool) closed status: (int) status timestamp: (int) timestamp
+-(void)getLoggedMeasureDataEvent: (int) deviceAddress sensorType: (int) sensorType sensorValue: (float) sensorValue timestamp: (int) timestamp
 {
-    [_sensorListenerDelegate getLoggedSealDataEvent: closed status: status timestamp: timestamp];
+    [_readerListenerDelegate getLoggedMeasureDataEvent: deviceAddress sensorType: sensorType sensorValue: sensorValue timestamp: timestamp];
+}
+
+-(void)getLoggedSealDataEvent: (int) deviceAddress  closed: (bool) closed status: (int) status timestamp: (int) timestamp
+{
+    [_readerListenerDelegate getLoggedSealDataEvent: deviceAddress closed: closed status: status timestamp: timestamp];
 }
 
 -(void)resultEvent: (int) command error: (int) error
 {
-    [_sensorListenerDelegate resultEvent: command error: error];
+    [_readerListenerDelegate resultEvent: command error: error];
+}
+
+- (void)getInventoryFilterEvent:(int)number sensors:(NSArray<NSNumber *> *)sensors
+{
+    [_readerListenerDelegate getInventoryFilterEvent: number sensors: sensors];
+}
+
+- (void)getInventoryParametersEvent:(int)mode maxNumber:(int)maxNumber timeout:(int)timeout
+{
+    [_readerListenerDelegate getInventoryParametersEvent: mode maxNumber: maxNumber timeout: timeout];
+}
+
+-(void) getRadioConfigurationEvent: (int) readerAddress panID: (int) panID radioChannel: (int) radioChannel
+{
+    [_readerListenerDelegate getRadioConfigurationEvent: readerAddress panID: panID radioChannel: radioChannel];
+}
+
+- (void)getReaderRadioPowerEvent:(int)radioPower
+{
+    [_readerListenerDelegate getReaderRadioPowerEvent: radioPower];
 }
 
 @end

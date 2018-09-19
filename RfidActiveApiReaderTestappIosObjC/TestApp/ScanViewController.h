@@ -23,7 +23,7 @@
  */
 
 #import <UIKit/UIKit.h>
-#import <RfidActiveApiSensorLibObjC/RfidActiveApiSensorLibObjC.h>
+#import <RfidActiveApiReaderLibObjC/RfidActiveApiReaderLibObjC.h>
 
 @interface ScanViewController : UIViewController<UITableViewDataSource, UITableViewDelegate, AbstractScanListenerProtocol>
 {

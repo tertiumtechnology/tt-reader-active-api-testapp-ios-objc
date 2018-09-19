@@ -23,15 +23,16 @@
  */
 
 #import <Foundation/Foundation.h>
-#import <RfidActiveApiSensorLibObjC/RfidActiveApiSensorLibObjC.h>
+#import <RfidActiveApiReaderLibObjC/RfidActiveApiReaderLibObjC.h>
 
-@interface EventsForwarder : NSObject<AbstractResponseListenerProtocol, AbstractSensorListenerProtocol>
+@interface EventsForwarder : NSObject<AbstractResponseListenerProtocol, AbstractReaderListenerProtocol>
 {
-    ActiveSensor *_api;
+    ActiveReader *_api;
 }
 
+@property (nonatomic, weak, nullable) NSObject<AbstractInventoryListenerProtocol> *inventoryListenerDelegate;
 @property (nonatomic, weak, nullable) NSObject<AbstractResponseListenerProtocol> *responseListenerDelegate;
-@property (nonatomic, weak, nullable) NSObject<AbstractSensorListenerProtocol> *sensorListenerDelegate;
+@property (nonatomic, weak, nullable) NSObject<AbstractReaderListenerProtocol> *readerListenerDelegate;
 
 +(EventsForwarder *_Nonnull) getInstance;
 

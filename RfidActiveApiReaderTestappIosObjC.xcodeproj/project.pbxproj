@@ -18,6 +18,10 @@
 		7B2C41FB20E64F4D00AB0F5A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7B2C41FA20E64F4D00AB0F5A /* Assets.xcassets */; };
 		7B2C41FE20E64F4D00AB0F5A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7B2C41FC20E64F4D00AB0F5A /* LaunchScreen.storyboard */; };
 		7B2C420120E64F4D00AB0F5A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B2C420020E64F4D00AB0F5A /* main.m */; };
+		9206D4F921525B4A008245ED /* RfidActiveApiReaderLibObjC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9206D4F221525A2C008245ED /* RfidActiveApiReaderLibObjC.framework */; };
+		9206D4FA21525B4A008245ED /* RfidActiveApiReaderLibObjC.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 9206D4F221525A2C008245ED /* RfidActiveApiReaderLibObjC.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		9206D4FF21525B4E008245ED /* TxRxLib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9206D4FE21525B4E008245ED /* TxRxLib.framework */; };
+		9206D50021525B4E008245ED /* TxRxLib.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 9206D4FE21525B4E008245ED /* TxRxLib.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -28,7 +32,29 @@
 			remoteGlobalIDString = 7BB4D7D720E65AEE006EE563;
 			remoteInfo = RfidActiveApiReaderLibObjC;
 		};
+		9206D4FB21525B4A008245ED /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9206D4EC21525A2C008245ED /* RfidActiveApiReaderLibObjC.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 7BB4D7D620E65AEE006EE563;
+			remoteInfo = RfidActiveApiReaderLibObjC;
+		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		9206D4FD21525B4A008245ED /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				9206D50021525B4E008245ED /* TxRxLib.framework in Embed Frameworks */,
+				9206D4FA21525B4A008245ED /* RfidActiveApiReaderLibObjC.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		7B26481920F376AC0055EB2C /* ScanViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ScanViewController.h; path = TestApp/ScanViewController.h; sourceTree = "<group>"; };
@@ -52,6 +78,7 @@
 		7B2C41FF20E64F4D00AB0F5A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7B2C420020E64F4D00AB0F5A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		9206D4EC21525A2C008245ED /* RfidActiveApiReaderLibObjC.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RfidActiveApiReaderLibObjC.xcodeproj; path = "tt-sensor-active-api-lib-ios-objc/RfidActiveApiReaderLibObjC/RfidActiveApiReaderLibObjC.xcodeproj"; sourceTree = "<group>"; };
+		9206D4FE21525B4E008245ED /* TxRxLib.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = TxRxLib.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +86,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9206D4FF21525B4E008245ED /* TxRxLib.framework in Frameworks */,
+				9206D4F921525B4A008245ED /* RfidActiveApiReaderLibObjC.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -68,6 +97,7 @@
 		7B2C41E520E64F4A00AB0F5A = {
 			isa = PBXGroup;
 			children = (
+				9206D4FE21525B4E008245ED /* TxRxLib.framework */,
 				9206D4EC21525A2C008245ED /* RfidActiveApiReaderLibObjC.xcodeproj */,
 				7B2C41F020E64F4A00AB0F5A /* RfidActiveApiReaderTestappIosObjC */,
 				7B2C41EF20E64F4A00AB0F5A /* Products */,
@@ -88,8 +118,8 @@
 				7BB4C6CF20F377C900E56752 /* Testing */,
 				7BB4C6CE20F377C400E56752 /* Scanning */,
 				7BB4C6CD20F377BF00E56752 /* Settings */,
-				7B26481C20F376AC0055EB2C /* EventsForwarder.m */,
 				7B26481B20F376AC0055EB2C /* EventsForwarder.h */,
+				7B26481C20F376AC0055EB2C /* EventsForwarder.m */,
 				7B2C41F120E64F4A00AB0F5A /* AppDelegate.h */,
 				7B2C41F220E64F4A00AB0F5A /* AppDelegate.m */,
 				7B2C41F720E64F4A00AB0F5A /* Main.storyboard */,
@@ -115,8 +145,8 @@
 			children = (
 				7B26482820F376AC0055EB2C /* BleTableViewHeaderCell.h */,
 				7B26482020F376AC0055EB2C /* BleTableViewHeaderCell.m */,
-				7B26482620F376AC0055EB2C /* BleTableViewDeviceCell.m */,
 				7B26481F20F376AC0055EB2C /* BleTableViewDeviceCell.h */,
+				7B26482620F376AC0055EB2C /* BleTableViewDeviceCell.m */,
 				7B26481920F376AC0055EB2C /* ScanViewController.h */,
 				7B26482520F376AC0055EB2C /* ScanViewController.m */,
 			);
@@ -150,10 +180,12 @@
 				7B2C41EA20E64F4A00AB0F5A /* Sources */,
 				7B2C41EB20E64F4A00AB0F5A /* Frameworks */,
 				7B2C41EC20E64F4A00AB0F5A /* Resources */,
+				9206D4FD21525B4A008245ED /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				9206D4FC21525B4A008245ED /* PBXTargetDependency */,
 			);
 			name = RfidActiveApiReaderTestappIosObjC;
 			productName = RfidActiveApiSensorTestappIosObjC;
@@ -238,6 +270,14 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		9206D4FC21525B4A008245ED /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = RfidActiveApiReaderLibObjC;
+			targetProxy = 9206D4FB21525B4A008245ED /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		7B2C41F720E64F4A00AB0F5A /* Main.storyboard */ = {
@@ -376,7 +416,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = X7JRCRW493;
-				INFOPLIST_FILE = RfidActiveApiSensorTestappIosObjC/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/RfidActiveApiReaderTestappIosObjC/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -393,7 +433,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = X7JRCRW493;
-				INFOPLIST_FILE = RfidActiveApiSensorTestappIosObjC/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/RfidActiveApiReaderTestappIosObjC/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

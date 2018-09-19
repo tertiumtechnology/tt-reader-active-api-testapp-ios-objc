@@ -24,57 +24,66 @@
 
 #import <UIKit/UIKit.h>
 #import <TxRxLib/TxRxLib.h>
-#import <RfidActiveApiSensorLibObjC/RfidActiveApiSensorLibObjC.h>
+#import <RfidActiveApiReaderLibObjC/RfidActiveApiReaderLibObjC.h>
 #import "EventsForwarder.h"
 
 @class Core;
 
 typedef enum CommandType: int {
     noCommand = 0
-    ,initialCommands
-    ,customCommand
-    ,repeatingCommand
+    ,readerCommand
+    ,deviceCommand
 } CommandType;
 
-@interface DeviceDetailViewController : UIViewController<UIPickerViewDelegate, UIPickerViewDataSource,  AbstractResponseListenerProtocol, AbstractSensorListenerProtocol>
+@interface DeviceDetailViewController : UIViewController<UIPickerViewDelegate, UIPickerViewDataSource,  AbstractResponseListenerProtocol, AbstractReaderListenerProtocol, AbstractInventoryListenerProtocol>
 {
-    ActiveSensor *_api;
-    AbstractSensor *_activeSensor;
-    AbstractSensor *_commandSensor;
-	EventsForwarder *_eventsForwarder;
-    NSTimer *_timer;
+    @public
+    ActiveReader *_api;
+    EventsForwarder *_eventsForwarder;
     UIFont *_font;
-    NSMutableAttributedString *_initialCommandsBuffer;
-    NSMutableAttributedString *_customCommandsBuffer;
+
+    NSDictionary* sensorTypeStrings;
+
+    NSMutableArray<NSString *> *_sensors;
+    NSMutableArray<ActiveDevice*> *_devices;
+    NSMutableArray<NSString *> *_deviceNames;
+
     float _batteryLevel;
     NSInteger _batteryStatus;
     bool _deviceAvailable;
-    bool _inMultiCommand;
-    NSInteger _currentInitialOperation;
-    NSInteger _maxInitialOperations;
-    NSInteger _selectedRow;
-    NSInteger _repeatingCommandIndex;
-    NSInteger _lastRepeatingCommand;
-    NSString *_sensorTypeName;
+
     CommandType _lastCommandType;
-    bool _inExtendedView;
     bool _connected;
-    NSMutableArray *_sensors;
-    int *_sensorTypeCodes;
+    bool _inExtendedView;
+    int _selectedReaderCommand;
+    int _selectedDeviceCommand;
+    ActiveDevice* _activeDevice;
+    int _activeDeviceIndex;
+    AbstractSensor* _activeSensor;
     int _activeSensorIndex;
-    NSDictionary* sensorTypeStrings;
-    NSString *_commandSensorTypeName;
+    int *_sensorTypeCodes;
+    NSString *_sensorTypeName;
+    bool _inMultiCommand;
+    bool _firstTime;
+    
+    NSString *_deviceName;
+
+    NSMutableAttributedString *_readerCommandsOutputBuffer;
+    NSMutableAttributedString *_deviceCommandsOutputBuffer;
 }
 
 @property (nonatomic, retain) NSString *deviceName;
 
 @property (weak, nonatomic) IBOutlet UILabel *lblDevice;
 @property (weak, nonatomic) IBOutlet UIButton *btnConnect;
-@property (weak, nonatomic) IBOutlet UIButton *btnStartOperation;
-@property (weak, nonatomic) IBOutlet UITextView *txtInitialCommands;
+@property (weak, nonatomic) IBOutlet UIPickerView *pikSelectReaderCommand;
+@property (weak, nonatomic) IBOutlet UIButton *btnStartReaderCommand;
+@property (weak, nonatomic) IBOutlet UITextView *txtReaderCommandsOutput;
+@property (weak, nonatomic) IBOutlet UIPickerView *pikSelectDevice;
 @property (weak, nonatomic) IBOutlet UIPickerView *pikSelectSensor;
-@property (weak, nonatomic) IBOutlet UIPickerView *pikSelectCommand;
-@property (weak, nonatomic) IBOutlet UITextView *txtCustomCommands;
+@property (weak, nonatomic) IBOutlet UIPickerView *pikSelectDeviceCommand;
+@property (weak, nonatomic) IBOutlet UIButton *btnStartDeviceCommand;
+@property (weak, nonatomic) IBOutlet UITextView *txtDeviceCommandsOutput;
 @property (weak, nonatomic) IBOutlet UILabel *lblBatteryStatus;
 
 - (IBAction)btnConnectPressed:(id)sender;
