@@ -419,6 +419,7 @@ static NSString* const deviceCommandNames[] = {
 			[vc->_api doInventory: true];
 			[vc appendTextToBuffer: @"Do inventory" color: [UIColor yellowColor]];
 			[vc enableReaderStartButton: true];
+            [vc enableDeviceStartButton: false];
 		}];
 		
 		// Initialize sensors
