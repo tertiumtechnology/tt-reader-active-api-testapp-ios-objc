@@ -188,6 +188,10 @@
                                 <rect key="frame" x="0.0" y="135" width="375" height="48"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="eZd-Wd-tz9" id="Mwq-zB-fWX"/>
+                                    <outlet property="delegate" destination="eZd-Wd-tz9" id="DZT-rn-Fa8"/>
+                                </connections>
                             </pickerView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OSp-Ku-aPZ" userLabel="Btn Start Reader Command">
                                 <rect key="frame" x="0.0" y="182" width="375" height="35"/>
@@ -233,6 +237,10 @@
                                 <rect key="frame" x="0.0" y="433" width="375" height="48"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="eZd-Wd-tz9" id="DMC-X6-ymr"/>
+                                    <outlet property="delegate" destination="eZd-Wd-tz9" id="6tf-Qz-zJH"/>
+                                </connections>
                             </pickerView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pvr-WC-vba">
                                 <rect key="frame" x="0.0" y="481" width="375" height="35"/>
