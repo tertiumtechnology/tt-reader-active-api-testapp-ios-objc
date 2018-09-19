@@ -193,7 +193,7 @@
                                     <outlet property="delegate" destination="eZd-Wd-tz9" id="DZT-rn-Fa8"/>
                                 </connections>
                             </pickerView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OSp-Ku-aPZ" userLabel="Btn Start Reader Command">
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OSp-Ku-aPZ" userLabel="Btn Start Reader Command">
                                 <rect key="frame" x="0.0" y="182" width="375" height="35"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="calibratedWhite"/>
@@ -242,7 +242,7 @@
                                     <outlet property="delegate" destination="eZd-Wd-tz9" id="6tf-Qz-zJH"/>
                                 </connections>
                             </pickerView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pvr-WC-vba">
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pvr-WC-vba">
                                 <rect key="frame" x="0.0" y="481" width="375" height="35"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
                                 <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="calibratedWhite"/>
@@ -254,7 +254,6 @@
                                 </state>
                                 <connections>
                                     <action selector="btnStartDeviceCommandPressed:" destination="eZd-Wd-tz9" eventType="touchUpInside" id="gYF-vf-fww"/>
-                                    <action selector="selfcallCustomOperation_selectedRowbtnStartOperationPressed:" destination="eZd-Wd-tz9" eventType="touchUpInside" id="BuV-pt-8xg"/>
                                 </connections>
                             </button>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="drF-LK-lRY">

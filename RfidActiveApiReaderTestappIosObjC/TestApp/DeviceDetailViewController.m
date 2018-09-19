@@ -295,13 +295,13 @@ static NSString* const deviceCommandNames[] = {
 //
 -(void)enableReaderStartButton: (bool) enabled
 {
-    _btnStartDeviceCommand.enabled = enabled;
+    _btnStartReaderCommand.enabled = enabled;
     if (!enabled) {
-        [_btnStartDeviceCommand setTitleColor: [UIColor blackColor] forState: UIControlStateNormal];
-        [_btnStartDeviceCommand setTitleColor: [UIColor blackColor] forState: UIControlStateSelected];
+        [_btnStartReaderCommand setTitleColor: [UIColor blackColor] forState: UIControlStateNormal];
+        [_btnStartReaderCommand setTitleColor: [UIColor blackColor] forState: UIControlStateSelected];
     } else {
-        [_btnStartDeviceCommand setTitleColor: [UIColor whiteColor] forState: UIControlStateNormal];
-        [_btnStartDeviceCommand setTitleColor: [UIColor grayColor] forState: UIControlStateSelected];
+        [_btnStartReaderCommand setTitleColor: [UIColor whiteColor] forState: UIControlStateNormal];
+        [_btnStartReaderCommand setTitleColor: [UIColor grayColor] forState: UIControlStateSelected];
     }
 }
 
@@ -830,6 +830,11 @@ static NSString* const deviceCommandNames[] = {
 				}
 		}];
 	}
+
+    _lastCommandType = deviceCommand;
+    [self enableDeviceStartButton: false];
+    void (^command)(DeviceDetailViewController*vc) = [_deviceCommandsMap objectAtIndex: method];
+    command(self);
 }
 
 -(void)updateBatteryLabel
@@ -968,7 +973,7 @@ static NSString* const deviceCommandNames[] = {
 	}
 	
 	if (_lastCommandType == readerCommand && command == ABSTRACT_READER_LISTENER_INITIALIZE_SENSORS_COMMAND && error == 0) {
-		ActiveDevice* device;
+        ActiveDevice* device = _activeDevice;
 		
 		//
 		[self appendTextToBuffer: [NSString stringWithFormat: @"%d sensors found", [device getSensorsNumber]] color: [UIColor whiteColor]];
@@ -986,6 +991,7 @@ static NSString* const deviceCommandNames[] = {
 		}
 		
 		[_pikSelectSensor reloadAllComponents];
+        [self enableDeviceStartButton: true];
 	}
 }
 
