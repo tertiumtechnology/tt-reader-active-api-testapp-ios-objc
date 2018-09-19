@@ -275,6 +275,9 @@ static NSString* const deviceCommandNames[] = {
 			_activeDeviceIndex = (int)row;
 			_activeSensor = nil;
 			_activeSensorIndex = 0;
+            [_sensors removeAllObjects];
+            [_pikSelectSensor reloadAllComponents];
+            [self enableDeviceStartButton: false];
 		}
 	} else if (pickerView == _pikSelectReaderCommand) {
 		_selectedReaderCommand = (int)row;
@@ -367,7 +370,7 @@ static NSString* const deviceCommandNames[] = {
 
 -(void) clearInventory
 {
-    _firstTime = false;
+    _firstTime = true;
     [_devices removeAllObjects];
     [_deviceNames removeAllObjects];
     [_sensors removeAllObjects];
@@ -411,19 +414,21 @@ static NSString* const deviceCommandNames[] = {
         }];
 		
 		// Do inventory
-		[_readerCommandsMap addObject: ^(DeviceDetailViewController*vc) {		
+		[_readerCommandsMap addObject: ^(DeviceDetailViewController*vc) {
 			[vc clearInventory];
-            vc->_firstTime = true;
 			[vc->_api doInventory: true];
 			[vc appendTextToBuffer: @"Do inventory" color: [UIColor yellowColor]];
 			[vc enableReaderStartButton: true];
 		}];
 		
 		// Initialize sensors
-		[_readerCommandsMap addObject: ^(DeviceDetailViewController*vc) {		
-			[vc->_activeDevice setTimeout: 2500];
-			[vc->_activeDevice initializeSensors];
-			[vc appendTextToBuffer: @"Initialize sensors" color: [UIColor yellowColor]];
+		[_readerCommandsMap addObject: ^(DeviceDetailViewController*vc) {
+            [vc->_sensors removeAllObjects];
+            [vc->_pikSelectSensor reloadAllComponents];
+            [vc enableDeviceStartButton: false];
+            [vc->_activeDevice setTimeout: 5000];
+            [vc->_activeDevice initializeSensors];
+            [vc appendTextToBuffer: @"Initialize sensors" color: [UIColor yellowColor]];
 		}];
 		
 		// Get firmware version
@@ -842,18 +847,15 @@ static NSString* const deviceCommandNames[] = {
 	[_deviceNames addObject: [device toString]];
 	[_pikSelectDevice reloadAllComponents];
 	
-	dispatch_async(dispatch_get_main_queue(), ^{
-		if (self->_firstTime) {
+    if (self->_firstTime) {
+        dispatch_async(dispatch_get_main_queue(), ^{
             [self appendReaderCommandBuffer: [NSString stringWithFormat: @"Found %lu devices\r\n", (unsigned long)self->_devices.count] color: [UIColor whiteColor]];
-			[self->_devices[0] setTimeout: 2500];
-			[self->_devices[0] initializeSensors];
-			[self appendTextToBuffer: @"InitializeSensors" color: [UIColor yellowColor]];
-			[self enableDeviceStartButton: true];
-			self->_firstTime = false;
             self->_activeDevice = self->_devices[0];
-			self->_activeDeviceIndex = 0;
-		}
-	});
+            self->_activeDeviceIndex = 0;
+        });
+        
+        self->_firstTime = false;
+    }
 }
 
 // AbstractSensorListenerProtocol implementation
