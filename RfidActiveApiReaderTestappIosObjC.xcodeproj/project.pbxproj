@@ -20,8 +20,8 @@
 		7B2C420120E64F4D00AB0F5A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B2C420020E64F4D00AB0F5A /* main.m */; };
 		9206D4F921525B4A008245ED /* RfidActiveApiReaderLibObjC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9206D4F221525A2C008245ED /* RfidActiveApiReaderLibObjC.framework */; };
 		9206D4FA21525B4A008245ED /* RfidActiveApiReaderLibObjC.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 9206D4F221525A2C008245ED /* RfidActiveApiReaderLibObjC.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		9206D4FF21525B4E008245ED /* TxRxLib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9206D4FE21525B4E008245ED /* TxRxLib.framework */; };
-		9206D50021525B4E008245ED /* TxRxLib.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 9206D4FE21525B4E008245ED /* TxRxLib.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		9206D520215293FE008245ED /* TxRxLib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9206D4FE21525B4E008245ED /* TxRxLib.framework */; };
+		9206D521215293FE008245ED /* TxRxLib.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 9206D4FE21525B4E008245ED /* TxRxLib.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,7 +48,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				9206D50021525B4E008245ED /* TxRxLib.framework in Embed Frameworks */,
+				9206D521215293FE008245ED /* TxRxLib.framework in Embed Frameworks */,
 				9206D4FA21525B4A008245ED /* RfidActiveApiReaderLibObjC.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
@@ -86,7 +86,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9206D4FF21525B4E008245ED /* TxRxLib.framework in Frameworks */,
+				9206D520215293FE008245ED /* TxRxLib.framework in Frameworks */,
 				9206D4F921525B4A008245ED /* RfidActiveApiReaderLibObjC.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
