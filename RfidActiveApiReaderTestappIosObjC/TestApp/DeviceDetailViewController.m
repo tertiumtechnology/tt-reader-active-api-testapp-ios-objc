@@ -425,6 +425,7 @@ static NSString* const deviceCommandNames[] = {
 		[_readerCommandsMap addObject: ^(DeviceDetailViewController*vc) {
             if (vc->_activeDevice == nil) {
                 [vc appendTextToBuffer: @"Please do inventory and select a device first!" color: [UIColor redColor]];
+                [vc enableReaderStartButton: true];
                 return;
             }
             
